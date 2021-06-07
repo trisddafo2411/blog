@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    // "beautify": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss -o src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,7 +24,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
-      // "pre-push": "npm test",
     }
   },
   "dependencies": {
