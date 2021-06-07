@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    // "beautify": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss -o src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,13 +19,25 @@
     "url": "https://github.com/trisddafo2411/blog/issues"
   },
   "homepage": "https://github.com/trisddafo2411/blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+      // "pre-push": "npm test",
+    }
+  },
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2"
   },
   "devDependencies": {
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "morgan": "^1.10.0",
     "node-sass": "^4.14.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.1"
   }
 }
