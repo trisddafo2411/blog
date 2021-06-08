@@ -20,20 +20,20 @@ app.use(express.json());
 app.use(morgan('combined'));
 
 // Template engine
-                            app.engine(
-        'hbs',
-            handlebars({
+app.engine(
+    'hbs',
+    handlebars({
         extname: '.hbs',
     }),
 );
 app.set('view engine', 'hbs');
-app.set(        'views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources/views'));
 // console.log(path.join(__dirname, 'resources/views'));
 
 //home,search,contact,v.v..
 
 //routes init
-route(              app);
+route(app);
 
 // app.post('/search', (req, res) => {
 //   console.log(req.body);
