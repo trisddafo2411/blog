@@ -7,8 +7,7 @@
     "beautify": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss -o src/public/css",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,11 +21,6 @@
   "homepage": "https://github.com/trisddafo2411/blog#readme",
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "express": "^4.17.1",
