@@ -10,12 +10,12 @@
             Chọn tất cả
           </label>
         </div>
-        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
+        <select class="form-control form-control-sm checkbox-select-all-options" name="action" required="required">
           <option value="">--Chọn hành động--</option>
           <option value="delete">Xóa</option>
         </select>
 
-        <button class="btn btn-primary btn-sm btn-check-all-submit disabled">Áp dụng</button>
+        <button class="btn btn-primary btn-sm btn-check-all-submit" disabled="disabled">Áp dụng</button>
       </div>
     </div>
 
@@ -88,11 +88,14 @@
   document.addEventListener("DOMContentLoaded", function() {
     var courseId;
     var deleteForm = document.forms['delete-course-form'];
-    var containerForm = document.forms['container-form'];
+    //var containerForm = document.forms['container-form'];
+    var containerForm = $('form[name="container-form"]');
     var btnDeleteCourse = document.getElementById('btn-delete-course');
     var checkboxAll = $('#checkbox-all');
     var courseItemCheckbox = $('input[name="courseIds[]"]');
     var checkAllSubmitBtn = $('.btn-check-all-submit');
+
+
     // When dialog confirm clicked
     $('#delete-course-modal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget);
@@ -121,20 +124,20 @@
     });
 
   // Check all submit btn clicked
-    checkAllSubmitBtn.on('submit', function(e) {
-      var isSubmitable = !$(this).hasClass('disabled');
+  /*  containerForm.on('submit', function(e) {
+      var isSubmitable = !checkAllSubmitBtn.hasClass('disabled');
       if(!isSubmitable) {
         e.preventDefault();
       }
-    });
+    }); */ //rejected
 
   // Re-render checkAll submit button
     function renderCheckAllSubmitBtn() {
       var checkedCount = $('input[name="courseIds[]"]:checked').length;
       if(checkedCount > 0) {
-        checkAllSubmitBtn.removeClass('disabled');
+        checkAllSubmitBtn.attr('disabled', false);
       } else {
-        checkAllSubmitBtn.addClass('disabled');
+        checkAllSubmitBtn.attr('disabled', false);
 
       }
     }
