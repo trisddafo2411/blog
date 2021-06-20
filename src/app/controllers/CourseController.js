@@ -21,11 +21,12 @@ class CourseController {
     //[POST] /courses/store
     store(req, res, next) {
         req.body.image = `https://img.youtube.com/vi/${req.body.videoID}/sddefault.jpg`;
+
         const course = new Course(req.body);
         course
             .save()
             .then(() => res.redirect('/me/stored/courses'))
-            .catch((error) => {});
+            .catch(next);
     }
 
     //[GET] /courses/:id/edit
@@ -69,14 +70,14 @@ class CourseController {
 
     //[POST] /courses/handle-form-actions
     handleFormActions(req, res, next) {
-        switch(req.body.action) {
+        switch (req.body.action) {
             case 'delete':
                 Course.delete({ _id: { $in: req.body.courseIds } })
                     .then(() => res.redirect('back'))
                     .catch(next);
                 break;
             default:
-                res.json({message: 'Action is invalid!'});
+                res.json({ message: 'Action is invalid!' });
         }
     }
 }
